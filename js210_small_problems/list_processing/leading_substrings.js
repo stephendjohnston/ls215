@@ -27,7 +27,7 @@ function leadingSubstrings(string) {
 // OR
 
 function leadingSubstrings(string) {
-  return string.split('').map((char, index) => string.slice(0, index + 1));
+  return string.split("").map((_, index, arr) => string.slice(0, index + 1));
 }
 
 leadingSubstrings('abc');      // ["a", "ab", "abc"]
