@@ -35,6 +35,17 @@ function removeVowels(stringArray) {
   }).join(''));
 }
 
+// Another solution using match:
+// I was trying to use match but it didn't work because in the third case
+// the string 'AEIOU' returns null and join('') doesnt work on null values
+// so I would get an error. This is a nice little work around that uses LOGICAL
+// OR to use an empty array when match returns null so that the join() call won't
+// raise an error.
+
+function removeVowels(array) {
+  console.log(array.map(string => (string.match(/[^aeiou]/gi) || []).join('')));
+  return array.map(string => (string.match(/[^aeiou]/gi) || []).join(''));
+}
 removeVowels(['abcdefghijklmnopqrstuvwxyz']);         // ["bcdfghjklmnpqrstvwxyz"]
 removeVowels(['green', 'YELLOW', 'black', 'white']);  // ["grn", "YLLW", "blck", "wht"]
 removeVowels(['ABC', 'AEIOU', 'XYZ']);                // ["BC", "", "XYZ"]
