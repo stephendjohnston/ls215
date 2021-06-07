@@ -65,9 +65,9 @@ function afterMidnight(minutes) {
 
 // LS SOLUTION
 
-// const MINUTES_PER_HOUR = 60;
-// const HOURS_PER_DAY = 24;
-// const MINUTES_PER_DAY = HOURS_PER_DAY * MINUTES_PER_HOUR;
+const MINUTES_PER_HOUR = 60;
+const HOURS_PER_DAY = 24;
+const MINUTES_PER_DAY = HOURS_PER_DAY * MINUTES_PER_HOUR;
 
 function leadingZero(number) {
   return number < 10 ? `0${number}` : String(number);
@@ -90,6 +90,14 @@ function timeOfDay(deltaMinutes) {
   return formatTime(hours, minutes);
 }
 
+console.log(timeOfDay(0) === "00:00");
+console.log(timeOfDay(-3) === "23:57");
+console.log(timeOfDay(35) === "00:35");
+console.log(timeOfDay(-1437) === "00:03");
+console.log(timeOfDay(3000) === "02:00");
+console.log(timeOfDay(800) === "13:20");
+console.log(timeOfDay(-4231) === "01:29");
+
 // Using Date Object
 /*
 Suppose you also needed to consider the day of week? (Assume that 
@@ -99,24 +107,27 @@ would need to produce a return value of Thursday 01:29.)
 
 
 */
-const MILLISECONDS_PER_DAY = 86400;
 
 function timeOfDay(deltaMinutes) {
-  if (deltaMinutes < 0) {
-    deltaMinutes = (deltaMinutes % MINUTES_PER_DAY) + MINUTES_PER_DAY;
-  } else {
-    deltaMinutes = deltaMinutes % MINUTES_PER_DAY;
-  }
+  const DAYS_OF_WEEK = [
+    'Sunday', 'Monday', 'Tuesday', 'Wednesday', 
+    'Thursday', 'Friday', 'Saturday'
+  ];
 
-  let today = new Date();
-  console.log(today);
+  let day = new Date('1/3/2021 00:00'); // Sunday
+  day.setMinutes(deltaMinutes);
 
+  const dayName = DAYS_OF_WEEK[day.getDay()];
+  const hours = String(day.getHours()).padStart(2, '0');
+  const minutes = String(day.getMinutes()).padStart(2, '0');
+
+  return `${dayName} ${hours}:${minutes}`;
 }
 
-// console.log(timeOfDay(0) === "00:00");
-console.log(timeOfDay(-3) === "23:57");
-console.log(timeOfDay(35) === "00:35");
-// console.log(timeOfDay(-1437) === "00:03");
-// console.log(timeOfDay(3000) === "02:00");
-// console.log(timeOfDay(800) === "13:20");
-console.log(timeOfDay(-4231) === "01:29");
+console.log(timeOfDay(0) === "Sunday 00:00");
+console.log(timeOfDay(-3) === "Saturday 23:57");
+console.log(timeOfDay(35) === "Sunday 00:35");
+console.log(timeOfDay(-1437) === "Saturday 00:03");
+console.log(timeOfDay(3000) === "Tuesday 02:00");
+console.log(timeOfDay(800) === "Sunday 13:20");
+console.log(timeOfDay(-4231) === "Thursday 01:29");
