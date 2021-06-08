@@ -1,7 +1,7 @@
 "use strict";
 
 function doubleConsonants(string) {
-  console.log(string.replace(/([^aeiou0-9 ,.!_-])/g, '$1$1'));
+  return string.replace(/([^aeiou0-9 ,.!_-])/g, '$1$1')
 }
 
 // brute force
