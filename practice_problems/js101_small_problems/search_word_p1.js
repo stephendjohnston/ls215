@@ -1,7 +1,5 @@
 "use strict";
 
-let rlSync = require('readline-sync');
-
 function searchWord(word, text) {
   if (arguments.length < 2) {
     console.log('Must have 2 inputs!');
