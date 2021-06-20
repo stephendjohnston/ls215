@@ -14,7 +14,6 @@ function transpose(matrix) {
     }
   }
 
-  console.log(transposed)
   return transposed;
 }
 
