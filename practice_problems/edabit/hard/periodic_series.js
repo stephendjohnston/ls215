@@ -74,11 +74,6 @@ create do while loop
   - concat sum to current series to get new series
   - subtract new series length by old series length to get slice value
   - slice new series at slice value and set to current series
-
-
-
-
-
 */
 
 function periodic(series) {
