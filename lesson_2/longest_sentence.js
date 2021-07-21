@@ -64,3 +64,32 @@ longestSentence(longText);
 // Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.
 
 // The longest sentence has 30 words.
+
+// Another Solution without Regex
+
+function longestSentence(text) {
+  const sentences = [];
+  let start = 0;
+
+  for (let i = 0; i < text.length; i += 1) {
+    if (['.', '!', '?'].includes(text[i])) {
+      sentences.push(text.slice(start, i + 1));
+      start = i + 2;
+    }
+  }
+  
+  let longest = sentences.reduce((previous, next) => {
+    if (wordCount(longest) > wordCount(currentSentence)) {
+      return longest;
+    } else {
+      return currentSentence;
+    }
+  });
+
+  console.log(longest);
+  console.log('The longest sentence has ' + String(wordCount(numberOfWords)) + ' words.');
+}
+
+function wordCount(sentence) {
+  sentence.split(' ').length;
+}
