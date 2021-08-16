@@ -111,9 +111,9 @@ function canConcatenate(mainArray, target) {
     return acc;
   });
 
-  // if (result.length !== target.length) {
-  //   return false;
-  // }
+  if (result.length !== target.length) {
+    return false;
+  }
 
   result.sort((a, b) => a - b);
   target.sort((a, b) => a - b);
