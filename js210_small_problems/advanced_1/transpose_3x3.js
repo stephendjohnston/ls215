@@ -69,7 +69,6 @@ Algorithm:
 
 */
 
-// hello there
 function transpose(matrix) {
   const newMatrix = [[], [], []];
 
