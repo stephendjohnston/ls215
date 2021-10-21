@@ -90,6 +90,17 @@ function advancedSort(array) {
   return mainArray;
 }
 
+// Refactored Solution
+// Filter out the like values. Map over the unique values. Use the input
+// array to filter all the values that are the same as the current element
+// in map and return an array of like elements. 
+
+function advancedSort(array) {
+  return array.filter((el, idx) => array.indexOf(el) === idx)
+              .map(ele => array.filter(e => e === ele));
+}
+
+
 console.log(advancedSort([1,2,1,2]))                  // [[1,1],[2,2]])
 console.log(advancedSort([2,1,2,1]))                  // [[2,2],[1,1]])
 console.log(advancedSort([3,2,1,3,2,1]))              // [[3,3],[2,2],[1,1]])
